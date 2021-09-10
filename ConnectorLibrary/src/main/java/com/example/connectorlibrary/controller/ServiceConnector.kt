@@ -100,6 +100,10 @@ class ServiceConnector(private val context: Context) {
             callback?.onGetGender(genderResponse)
         }
 
+        override fun onFailureResponse(failureResponse: FailureResponse) {
+            callback?.onFailureResponse(failureResponse)
+        }
+
     }
 
     fun connectService() {

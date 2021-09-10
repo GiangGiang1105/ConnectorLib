@@ -10,6 +10,7 @@ import  com.example.connectorlibrary.enitity.StatisticCovidResponse;
 import  com.example.connectorlibrary.enitity.SymptomResponse;
 import  com.example.connectorlibrary.enitity.ActiveResponse;
 import  com.example.connectorlibrary.enitity.GenderResponse;
+import  com.example.connectorlibrary.enitity.FailureResponse;
 // Declare any non-default types here with import statements
 
 interface  IServerServiceCallback {
@@ -71,4 +72,8 @@ interface  IServerServiceCallback {
                    * Called upon get gender request process.
               */
      void onGetGender(in GenderResponse genderResponse);
+ /**
+                   * Called upon all request process if even error.
+              */
+     void onFailureResponse(in FailureResponse failureResponse);
 }

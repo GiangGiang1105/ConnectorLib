@@ -80,6 +80,14 @@ class ServiceControllerUser(context: Context) : Callback.CallbackUser,
         }
     }
 
+    override fun onFailureResponse(failureResponse: FailureResponse) {
+        coroutineScope.launch {
+            callbacks.forEach {
+                it.onFailureResponse(failureResponse)
+            }
+        }
+    }
+
     override fun onUserSignUp(authResponse: AuthResponse) {
         coroutineScope.launch {
             callbacks.forEach {

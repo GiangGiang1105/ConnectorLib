@@ -81,6 +81,14 @@ class ServiceControllerAdmin(context: Context) : Callback.CallbackAdmin,
         }
     }
 
+    override fun onFailureResponse(failureResponse: FailureResponse) {
+        coroutineScope.launch {
+            callbacks.forEach {
+                it.onFailureResponse(failureResponse)
+            }
+        }
+    }
+
     override fun onGetAllUsers(listUsersResponse: ListUsersResponse) {
         coroutineScope.launch {
             callbacks.forEach {

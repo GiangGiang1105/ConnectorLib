@@ -16,6 +16,8 @@ interface Callback {
 
     fun onGetUserHealths(healthResponse: HealthResponse)
 
+    fun onFailureResponse(failureResponse: FailureResponse)
+
     interface CallbackUser : Callback {
 
         fun onUserSignUp(authResponse: AuthResponse)
