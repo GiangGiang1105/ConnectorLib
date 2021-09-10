@@ -5,10 +5,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "symptom")
+@Entity(tableName = "gender")
 @Parcelize
-data class Symptom(
-    @PrimaryKey(autoGenerate = true) val symptom_id: Int = 0,
-    val status_id: Int = 0,
-    val symptom_name: String = ""
+class Gender(
+    @PrimaryKey(autoGenerate = true)
+    val gender_id: Int = 0,
+    val gender_name: String = ""
 ) : Parcelable

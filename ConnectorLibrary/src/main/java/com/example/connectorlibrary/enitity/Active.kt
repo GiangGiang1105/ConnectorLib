@@ -5,9 +5,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "static")
+@Entity(tableName = "active")
 @Parcelize
-data class Static(
+data class Active(
     @PrimaryKey(autoGenerate = true)
-    val status_id: Int = 0, val status_name: String = ""
+    val active_id: Int = 0,
+    val active_name: String = ""
 ) : Parcelable

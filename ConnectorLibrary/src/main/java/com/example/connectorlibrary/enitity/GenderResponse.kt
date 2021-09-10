@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class FailureResponse(
-    @RequestCode val requestCode: Int,
-    @ResponseCode val responseCode: Int
+data class GenderResponse(
+    @ResponseCode val responseCode: Int,
+    val listGender: List<Gender>
 ) : Parcelable
