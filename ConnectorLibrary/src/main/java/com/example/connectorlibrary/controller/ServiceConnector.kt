@@ -107,6 +107,7 @@ class ServiceConnector(private val context: Context) {
     }
 
     fun connectService() {
+        Log.e(TAG, "connectService: ", )
         if (serviceConnected) {
             Log.d(TAG, "connectService: service was already connected. Ignoring...")
             return
@@ -231,6 +232,7 @@ class ServiceConnector(private val context: Context) {
     }
 
     fun userSignUp(user: User) {
+        Log.e(TAG, "userSignUp:serr ", )
         if (!serviceConnected) {
             Log.d(TAG, "userSignUp: service is not connected. Ignoring...")
             return

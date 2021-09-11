@@ -1,6 +1,7 @@
 package com.example.connectorlibrary.controller
 
 import android.content.Context
+import android.util.Log
 import com.example.connectorlibrary.base.CallbackProvider
 import com.example.connectorlibrary.callback.CallbackConnector
 import com.example.connectorlibrary.enitity.*
@@ -19,6 +20,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
     override val callbacks: ArrayList<CallbackConnector.CallbackConnectorUser> = ArrayList()
 
     override fun addCallback(callbackConnector: CallbackConnector.CallbackConnectorUser) {
+        Log.e("TAG", "addCallback: ", )
         if (callbacks.size > 0) {
             connect()
         }
@@ -137,6 +139,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
     }
 
     private fun connect() {
+        Log.e("TAG", "connect: ", )
         serviceProvider.connectService()
     }
 
@@ -165,6 +168,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
     }
 
     fun userSignUp(user: User) {
+        Log.e("TAG", "userSignUp: 11111", )
         serviceProvider.userSignUp(user)
     }
 
