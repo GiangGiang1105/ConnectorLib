@@ -85,6 +85,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
 
     override fun onFailureResponse(failureResponse: FailureResponse) {
         coroutineScope.launch {
+            Log.e("TAG", "onFailureResponse:controller ", )
             callbacks.forEach {
                 it.onFailureResponse(failureResponse)
             }

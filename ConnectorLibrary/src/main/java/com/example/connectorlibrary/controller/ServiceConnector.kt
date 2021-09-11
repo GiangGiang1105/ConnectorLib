@@ -65,6 +65,7 @@ class ServiceConnector(private val context: Context) {
         }
 
         override fun onFailureResponse(failureResponse: FailureResponse) {
+            Log.e(TAG, "onFailureResponse:", )
             callbackConnector?.onFailureResponse(failureResponse)
         }
 
