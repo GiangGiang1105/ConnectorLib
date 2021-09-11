@@ -88,8 +88,8 @@ class ServiceConnector(private val context: Context) {
             callbackConnectorUser?.onUpdateUser(userResponse)
         }
 
-        override fun onGetStatisticCovid(statistic: StatisticCovidResponse) {
-            callbackConnectorUser?.onGetStatisticCovid(statistic)
+        override fun onGetStatisticCovid(statisticVn: StatisticCovidVnResponse) {
+            callbackConnectorUser?.onGetStatisticCovid(statisticVn)
         }
 
         override fun onGetAllUsers(listUsersResponse: ListUsersResponse) {
@@ -237,7 +237,11 @@ class ServiceConnector(private val context: Context) {
             throw RemoteException("Service is not connected")
         }
         try {
+            if (serverService == null){
+                Log.e(TAG, "userSignUp: 1", )
+            }
             serverService?.userSignUp(user)
+            Log.e(TAG, "userSignUp: 2", )
         } catch (e: RemoteException) {
             e.printStackTrace()
         }

@@ -26,7 +26,7 @@ interface CallbackConnector {
 
         fun onInsertHealth(healthResponse: HealthResponse)
 
-        fun onGetStatisticCovid(statisticCovidResponse: StatisticCovidResponse)
+        fun onGetStatisticCovid(statisticCovidVnResponse: StatisticCovidVnResponse)
 
         fun onGetUser(user: UserResponse)
 

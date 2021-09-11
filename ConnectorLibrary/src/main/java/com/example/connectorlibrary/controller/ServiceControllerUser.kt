@@ -115,10 +115,10 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
         }
     }
 
-    override fun onGetStatisticCovid(statisticCovidResponse: StatisticCovidResponse) {
+    override fun onGetStatisticCovid(statisticCovidVnResponse: StatisticCovidVnResponse) {
         coroutineScope.launch {
             callbacks.forEach {
-                it.onGetStatisticCovid(statisticCovidResponse)
+                it.onGetStatisticCovid(statisticCovidVnResponse)
             }
         }
     }
