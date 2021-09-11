@@ -69,6 +69,7 @@ class ServiceConnector(private val context: Context) {
         }
 
         override fun onUserSignUp(authResponse: AuthResponse) {
+            Log.e(TAG, "onUserSignUp: connector ", )
             callbackConnectorUser?.onUserSignUp(authResponse)
         }
 
@@ -122,6 +123,7 @@ class ServiceConnector(private val context: Context) {
     }
 
     fun disconnectService() {
+        Log.e(TAG, "disconnectService: ", )
         if (!serviceConnected) {
             Log.d(TAG, "disconnectService:  service is not connected. Ignoring...")
             return
@@ -241,7 +243,7 @@ class ServiceConnector(private val context: Context) {
                 Log.e(TAG, "userSignUp: 1", )
             }
             serverService?.userSignUp(user)
-            Log.e(TAG, "userSignUp: 2", )
+            Log.e(TAG, "userSignUp: ", )
         } catch (e: RemoteException) {
             e.printStackTrace()
         }

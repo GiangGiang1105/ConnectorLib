@@ -93,6 +93,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
 
     override fun onUserSignUp(authResponse: AuthResponse) {
         coroutineScope.launch {
+            Log.e("TAG", "onUserSignUp: controller", )
             callbacks.forEach {
                 it.onUserSignUp(authResponse)
             }
