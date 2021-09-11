@@ -13,6 +13,8 @@ annotation class RequestCode {
         const val GET_HEALTHS = 7
         const val GET_SYMPTOMS = 8
         const val GET_STATISTIC_COVID = 9
-        const val GET_STATICS = 10
+        const val GET_STATUS = 10
+        const val DELETE_USER = 11
+        const val LOCK_USER = 12
     }
 }
