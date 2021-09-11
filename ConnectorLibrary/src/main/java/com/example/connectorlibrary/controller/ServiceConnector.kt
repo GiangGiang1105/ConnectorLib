@@ -44,48 +44,12 @@ class ServiceConnector(private val context: Context) {
 
     private val serverServiceCallback = object : IServerServiceCallback.Stub() {
 
-        override fun onUserSignUp(authResponse: AuthResponse) {
-            callbackConnectorUser?.onUserSignUp(authResponse)
-        }
-
-        override fun onUserSignIn(authResponse: AuthResponse) {
-            callbackConnectorUser?.onUserSignIn(authResponse)
-        }
-
-        override fun onInsertHealth(healthResponse: HealthResponse) {
-            callbackConnectorUser?.onInsertHealth(healthResponse)
-        }
-
         override fun onGetUserHealths(listHealths: HealthResponse) {
             callbackConnector?.onGetUserHealths(listHealths)
         }
 
-        override fun onGetUser(userResponse: UserResponse) {
-            callbackConnectorUser?.onGetUser(userResponse)
-        }
-
-        override fun onGetAllUsers(listUsersResponse: ListUsersResponse) {
-            callbackConnectorAdmin?.onGetAllUsers(listUsersResponse)
-        }
-
-        override fun onUpdateUser(userResponse: UserResponse) {
-            callbackConnectorUser?.onUpdateUser(userResponse)
-        }
-
-        override fun onDeleteUser(userResponse: UserResponse) {
-            callbackConnectorAdmin?.onDeleteUser(userResponse)
-        }
-
-        override fun onLockUser(userResponse: UserResponse) {
-            callbackConnectorAdmin?.onLockUser(userResponse)
-        }
-
         override fun onGetStatus(statusResponse: StatusResponse) {
             callbackConnector?.onGetStatus(statusResponse)
-        }
-
-        override fun onGetStatisticCovid(statistic: StatisticCovidResponse) {
-            callbackConnectorUser?.onGetStatisticCovid(statistic)
         }
 
         override fun onGetSymptom(symptomResponse: SymptomResponse) {
@@ -102,6 +66,42 @@ class ServiceConnector(private val context: Context) {
 
         override fun onFailureResponse(failureResponse: FailureResponse) {
             callbackConnector?.onFailureResponse(failureResponse)
+        }
+
+        override fun onUserSignUp(authResponse: AuthResponse) {
+            callbackConnectorUser?.onUserSignUp(authResponse)
+        }
+
+        override fun onUserSignIn(authResponse: AuthResponse) {
+            callbackConnectorUser?.onUserSignIn(authResponse)
+        }
+
+        override fun onInsertHealth(healthResponse: HealthResponse) {
+            callbackConnectorUser?.onInsertHealth(healthResponse)
+        }
+
+        override fun onGetUser(userResponse: UserResponse) {
+            callbackConnectorUser?.onGetUser(userResponse)
+        }
+
+        override fun onUpdateUser(userResponse: UserResponse) {
+            callbackConnectorUser?.onUpdateUser(userResponse)
+        }
+
+        override fun onGetStatisticCovid(statistic: StatisticCovidResponse) {
+            callbackConnectorUser?.onGetStatisticCovid(statistic)
+        }
+
+        override fun onGetAllUsers(listUsersResponse: ListUsersResponse) {
+            callbackConnectorAdmin?.onGetAllUsers(listUsersResponse)
+        }
+
+        override fun onDeleteUser(userResponse: UserResponse) {
+            callbackConnectorAdmin?.onDeleteUser(userResponse)
+        }
+
+        override fun onLockUser(userResponse: UserResponse) {
+            callbackConnectorAdmin?.onLockUser(userResponse)
         }
 
     }
@@ -138,7 +138,7 @@ class ServiceConnector(private val context: Context) {
     fun getStatus() {
         if (!serviceConnected) {
             Log.d(TAG, "getStatus: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.getStatus()
@@ -150,7 +150,7 @@ class ServiceConnector(private val context: Context) {
     fun getSymptom() {
         if (!serviceConnected) {
             Log.d(TAG, "getSymptom: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.getStatus()
@@ -162,7 +162,7 @@ class ServiceConnector(private val context: Context) {
     fun getActive() {
         if (!serviceConnected) {
             Log.d(TAG, "getActive: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.getActive()
@@ -174,7 +174,7 @@ class ServiceConnector(private val context: Context) {
     fun getGender() {
         if (!serviceConnected) {
             Log.d(TAG, "getGender: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.getStatus()
@@ -186,7 +186,7 @@ class ServiceConnector(private val context: Context) {
     fun getUserHealths() {
         if (!serviceConnected) {
             Log.d(TAG, "getUserHealths: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.getUserHealths()
@@ -198,7 +198,7 @@ class ServiceConnector(private val context: Context) {
     fun getAllUsers() {
         if (!serviceConnected) {
             Log.d(TAG, "getAllUsers: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.getAllUsers()
@@ -210,7 +210,7 @@ class ServiceConnector(private val context: Context) {
     fun deleteUser(user: User) {
         if (!serviceConnected) {
             Log.d(TAG, "getAllUsers: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.deleteUser(user)
@@ -222,7 +222,7 @@ class ServiceConnector(private val context: Context) {
     fun lockUser(user: User) {
         if (!serviceConnected) {
             Log.d(TAG, "lockUser: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.lockUser(user)
@@ -232,10 +232,9 @@ class ServiceConnector(private val context: Context) {
     }
 
     fun userSignUp(user: User) {
-        Log.e(TAG, "userSignUp:serr ", )
         if (!serviceConnected) {
             Log.d(TAG, "userSignUp: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.userSignUp(user)
@@ -247,7 +246,7 @@ class ServiceConnector(private val context: Context) {
     fun userSignIn(phoneNumber: String) {
         if (!serviceConnected) {
             Log.d(TAG, "userSignIn: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.userSignIn(phoneNumber)
@@ -259,7 +258,7 @@ class ServiceConnector(private val context: Context) {
     fun insertHealth(health: Health) {
         if (!serviceConnected) {
             Log.d(TAG, "insertHealth: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.insertHealth(health)
@@ -271,7 +270,7 @@ class ServiceConnector(private val context: Context) {
     fun getStatisticCovid() {
         if (!serviceConnected) {
             Log.d(TAG, "getStatisticCovid: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.getStatisticCovid()
@@ -283,7 +282,7 @@ class ServiceConnector(private val context: Context) {
     fun getUser(userId: Int) {
         if (!serviceConnected) {
             Log.d(TAG, "getUser: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.getUser(userId)
@@ -295,7 +294,7 @@ class ServiceConnector(private val context: Context) {
     fun updateUser(user: User) {
         if (!serviceConnected) {
             Log.d(TAG, "updateUser: service is not connected. Ignoring...")
-            return
+            throw RemoteException("Service is not connected")
         }
         try {
             serverService?.updateUser(user)
