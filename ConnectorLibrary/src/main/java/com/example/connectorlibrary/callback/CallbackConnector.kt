@@ -2,7 +2,7 @@ package com.example.connectorlibrary.callback
 
 import com.example.connectorlibrary.enitity.*
 
-interface Callback {
+interface CallbackConnector {
 
     fun onServerConnected()
 
@@ -18,7 +18,7 @@ interface Callback {
 
     fun onFailureResponse(failureResponse: FailureResponse)
 
-    interface CallbackUser : Callback {
+    interface CallbackConnectorUser : CallbackConnector {
 
         fun onUserSignUp(authResponse: AuthResponse)
 
@@ -33,7 +33,7 @@ interface Callback {
         fun onUpdateUser(user: UserResponse)
     }
 
-    interface CallbackAdmin: Callback {
+    interface CallbackConnectorAdmin: CallbackConnector {
 
         fun onGetAllUsers(listUsersResponse: ListUsersResponse)
 

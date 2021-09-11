@@ -2,30 +2,30 @@ package com.example.connectorlibrary.controller
 
 import android.content.Context
 import com.example.connectorlibrary.base.CallbackProvider
-import com.example.connectorlibrary.callback.Callback
+import com.example.connectorlibrary.callback.CallbackConnector
 import com.example.connectorlibrary.enitity.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ServiceControllerUser(context: Context) : Callback.CallbackUser,
-    CallbackProvider<Callback.CallbackUser> {
+class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnectorUser,
+    CallbackProvider<CallbackConnector.CallbackConnectorUser> {
 
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     private val serviceProvider = ServiceConnector.Builder(context)
         .setCallback(this)
         .build()
-    override val callbacks: ArrayList<Callback.CallbackUser> = ArrayList()
+    override val callbacks: ArrayList<CallbackConnector.CallbackConnectorUser> = ArrayList()
 
-    override fun addCallback(callback: Callback.CallbackUser) {
+    override fun addCallback(callbackConnector: CallbackConnector.CallbackConnectorUser) {
         if (callbacks.size > 0) {
             connect()
         }
     }
 
-    override fun removeCallback(callback: Callback.CallbackUser) {
-        super.removeCallback(callback)
+    override fun removeCallback(callbackConnector: CallbackConnector.CallbackConnectorUser) {
+        super.removeCallback(callbackConnector)
         if (callbacks.size == 0) {
             disconnect()
         }

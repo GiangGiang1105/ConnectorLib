@@ -8,16 +8,16 @@ import android.os.IBinder
 import android.os.RemoteException
 import android.util.Log
 import com.example.connectorlibrary.R
-import com.example.connectorlibrary.callback.Callback
+import com.example.connectorlibrary.callback.CallbackConnector
 import com.example.connectorlibrary.enitity.*
 
 class ServiceConnector(private val context: Context) {
 
     var serviceConnected = false
     private var serverService: IServerService? = null
-    var callback: Callback? = null
-    var callbackAdmin: Callback.CallbackAdmin? = null
-    var callbackUser: Callback.CallbackUser? = null
+    var callbackConnector: CallbackConnector? = null
+    var callbackConnectorAdmin: CallbackConnector.CallbackConnectorAdmin? = null
+    var callbackConnectorUser: CallbackConnector.CallbackConnectorUser? = null
 
 
     private val serviceConnection = object : ServiceConnection {
@@ -31,7 +31,7 @@ class ServiceConnector(private val context: Context) {
             } catch (e: RemoteException) {
                 e.printStackTrace()
             }
-            callback?.onServerConnected()
+            callbackConnector?.onServerConnected()
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
@@ -45,63 +45,63 @@ class ServiceConnector(private val context: Context) {
     private val serverServiceCallback = object : IServerServiceCallback.Stub() {
 
         override fun onUserSignUp(authResponse: AuthResponse) {
-            callbackUser?.onUserSignUp(authResponse)
+            callbackConnectorUser?.onUserSignUp(authResponse)
         }
 
         override fun onUserSignIn(authResponse: AuthResponse) {
-            callbackUser?.onUserSignIn(authResponse)
+            callbackConnectorUser?.onUserSignIn(authResponse)
         }
 
         override fun onInsertHealth(healthResponse: HealthResponse) {
-            callbackUser?.onInsertHealth(healthResponse)
+            callbackConnectorUser?.onInsertHealth(healthResponse)
         }
 
         override fun onGetUserHealths(listHealths: HealthResponse) {
-            callback?.onGetUserHealths(listHealths)
+            callbackConnector?.onGetUserHealths(listHealths)
         }
 
         override fun onGetUser(userResponse: UserResponse) {
-            callbackUser?.onGetUser(userResponse)
+            callbackConnectorUser?.onGetUser(userResponse)
         }
 
         override fun onGetAllUsers(listUsersResponse: ListUsersResponse) {
-            callbackAdmin?.onGetAllUsers(listUsersResponse)
+            callbackConnectorAdmin?.onGetAllUsers(listUsersResponse)
         }
 
         override fun onUpdateUser(userResponse: UserResponse) {
-            callbackUser?.onUpdateUser(userResponse)
+            callbackConnectorUser?.onUpdateUser(userResponse)
         }
 
         override fun onDeleteUser(userResponse: UserResponse) {
-            callbackAdmin?.onDeleteUser(userResponse)
+            callbackConnectorAdmin?.onDeleteUser(userResponse)
         }
 
         override fun onLockUser(userResponse: UserResponse) {
-            callbackAdmin?.onLockUser(userResponse)
+            callbackConnectorAdmin?.onLockUser(userResponse)
         }
 
         override fun onGetStatus(statusResponse: StatusResponse) {
-            callback?.onGetStatus(statusResponse)
+            callbackConnector?.onGetStatus(statusResponse)
         }
 
         override fun onGetStatisticCovid(statistic: StatisticCovidResponse) {
-            callbackUser?.onGetStatisticCovid(statistic)
+            callbackConnectorUser?.onGetStatisticCovid(statistic)
         }
 
         override fun onGetSymptom(symptomResponse: SymptomResponse) {
-            callback?.onGetSymptom(symptomResponse)
+            callbackConnector?.onGetSymptom(symptomResponse)
         }
 
         override fun onGetActive(activeResponse: ActiveResponse) {
-            callback?.onGetActive(activeResponse)
+            callbackConnector?.onGetActive(activeResponse)
         }
 
         override fun onGetGender(genderResponse: GenderResponse) {
-            callback?.onGetGender(genderResponse)
+            callbackConnector?.onGetGender(genderResponse)
         }
 
         override fun onFailureResponse(failureResponse: FailureResponse) {
-            callback?.onFailureResponse(failureResponse)
+            callbackConnector?.onFailureResponse(failureResponse)
         }
 
     }
@@ -306,10 +306,10 @@ class ServiceConnector(private val context: Context) {
 
         private val connectorClient = ServiceConnector(context)
 
-        fun setCallback(cb: Callback): Builder {
-            connectorClient.callback = cb
-            if (cb is Callback.CallbackUser) connectorClient.callbackUser = cb
-            if (cb is Callback.CallbackAdmin) connectorClient.callbackAdmin = cb
+        fun setCallback(cb: CallbackConnector): Builder {
+            connectorClient.callbackConnector = cb
+            if (cb is CallbackConnector.CallbackConnectorUser) connectorClient.callbackConnectorUser = cb
+            if (cb is CallbackConnector.CallbackConnectorAdmin) connectorClient.callbackConnectorAdmin = cb
             return this@Builder
         }
 

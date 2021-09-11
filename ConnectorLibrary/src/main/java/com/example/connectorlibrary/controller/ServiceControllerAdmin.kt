@@ -2,14 +2,14 @@ package com.example.connectorlibrary.controller
 
 import android.content.Context
 import com.example.connectorlibrary.base.CallbackProvider
-import com.example.connectorlibrary.callback.Callback
+import com.example.connectorlibrary.callback.CallbackConnector
 import com.example.connectorlibrary.enitity.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ServiceControllerAdmin(context: Context) : Callback.CallbackAdmin,
-    CallbackProvider<Callback.CallbackAdmin> {
+class ServiceControllerAdmin(context: Context) : CallbackConnector.CallbackConnectorAdmin,
+    CallbackProvider<CallbackConnector.CallbackConnectorAdmin> {
 
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
@@ -17,17 +17,17 @@ class ServiceControllerAdmin(context: Context) : Callback.CallbackAdmin,
         .setCallback(this)
         .build()
 
-    override val callbacks: ArrayList<Callback.CallbackAdmin> = ArrayList()
+    override val callbacks: ArrayList<CallbackConnector.CallbackConnectorAdmin> = ArrayList()
 
 
-    override fun addCallback(callback: Callback.CallbackAdmin) {
+    override fun addCallback(callbackConnector: CallbackConnector.CallbackConnectorAdmin) {
         if (callbacks.size > 0) {
             connect()
         }
     }
 
-    override fun removeCallback(callback: Callback.CallbackAdmin) {
-        super.removeCallback(callback)
+    override fun removeCallback(callbackConnector: CallbackConnector.CallbackConnectorAdmin) {
+        super.removeCallback(callbackConnector)
         if (callbacks.size == 0) {
             disconnect()
         }
