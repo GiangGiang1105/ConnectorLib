@@ -16,5 +16,7 @@ annotation class RequestCode {
         const val GET_STATUS = 10
         const val DELETE_USER = 11
         const val LOCK_USER = 12
+        const val GET_ACTIVE = 13
+        const val GET_GENDER = 14
     }
 }

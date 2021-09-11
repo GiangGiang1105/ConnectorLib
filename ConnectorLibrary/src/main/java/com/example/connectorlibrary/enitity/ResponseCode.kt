@@ -13,14 +13,16 @@ annotation class ResponseCode {
         const val ERROR_GET_LIST_USERS = -5
         const val ERROR_INSERT_HEALTH = -6
         const val ERROR_HEALTHS = -7
-        const val ERROR_GET_SYMPTOMS = -8
+        const val ERROR_LIST_SYMPTOMS_NULL = -8
         const val ERROR_GET_STATISTIC_COVID = -9
-        const val ERROR_GET_STATUS = -10
+        const val ERROR_LIST_STATUS_NULL = -10
         const val ERROR_SIGN_UP_WITH_USER_EXISTS = -11
         const val ERROR_LIST_HEATHS_NOT_FOUND = -12
         const val ERROR_USER_NOT_FOUND = -13
         const val ERROR_LIST_USER_NULL = -14
         const val ERROR_DELETE_USER = -15
         const val ERROR_LOCK_USER = -16
+        const val ERROR_LIST_ACTIVE_NULL = -17
+        const val ERROR_LIST_GENDER_NULL = -17
     }
 }
