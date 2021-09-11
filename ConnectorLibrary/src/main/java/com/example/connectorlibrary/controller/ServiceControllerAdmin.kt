@@ -21,6 +21,7 @@ class ServiceControllerAdmin(context: Context) : CallbackConnector.CallbackConne
 
 
     override fun addCallback(callbackConnector: CallbackConnector.CallbackConnectorAdmin) {
+        super.addCallback(callbackConnector)
         if (callbacks.size > 0) {
             connect()
         }

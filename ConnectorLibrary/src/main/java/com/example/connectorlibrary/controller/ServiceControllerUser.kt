@@ -20,6 +20,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
     override val callbacks: ArrayList<CallbackConnector.CallbackConnectorUser> = ArrayList()
 
     override fun addCallback(callbackConnector: CallbackConnector.CallbackConnectorUser) {
+        super.addCallback(callbackConnector)
         Log.e("TAG", "addCallback: ", )
         if (callbacks.size > 0) {
             connect()
