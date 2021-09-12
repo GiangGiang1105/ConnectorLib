@@ -65,12 +65,10 @@ class ServiceConnector(private val context: Context) {
         }
 
         override fun onFailureResponse(failureResponse: FailureResponse) {
-            Log.e(TAG, "onFailureResponse:", )
             callbackConnector?.onFailureResponse(failureResponse)
         }
 
         override fun onUserSignUp(authResponse: AuthResponse) {
-            Log.e(TAG, "onUserSignUp: connector ", )
             callbackConnectorUser?.onUserSignUp(authResponse)
         }
 
@@ -90,8 +88,20 @@ class ServiceConnector(private val context: Context) {
             callbackConnectorUser?.onUpdateUser(userResponse)
         }
 
-        override fun onGetStatisticCovid(statisticVn: StatisticCovidVnResponse) {
-            callbackConnectorUser?.onGetStatisticCovid(statisticVn)
+        override fun onGetStatisticCovidVn(statistic: StatisticCovidVnResponse) {
+            callbackConnectorUser?.onGetStatisticCovidVn(statistic)
+        }
+
+        override fun onGetStatisticCovidWorld(statistic: StatisticCovidWorldResponse) {
+            callbackConnectorUser?.onGetStatisticCovidWorld(statistic)
+        }
+
+        override fun onGetHistoryCovidVn(history: HistoryCovidResponse) {
+            callbackConnectorUser?.onGetHistoryCovidVn(history)
+        }
+
+        override fun onGetHistoryCovidWorld(history: HistoryCovidResponse) {
+            callbackConnectorUser?.onGetHistoryCovidWorld(history)
         }
 
         override fun onGetAllUsers(listUsersResponse: ListUsersResponse) {
@@ -109,7 +119,7 @@ class ServiceConnector(private val context: Context) {
     }
 
     fun connectService() {
-        Log.e(TAG, "connectService: ", )
+        Log.e(TAG, "connectService: ")
         if (serviceConnected) {
             Log.d(TAG, "connectService: service was already connected. Ignoring...")
             return
@@ -124,7 +134,7 @@ class ServiceConnector(private val context: Context) {
     }
 
     fun disconnectService() {
-        Log.e(TAG, "disconnectService: ", )
+        Log.e(TAG, "disconnectService: ")
         if (!serviceConnected) {
             Log.d(TAG, "disconnectService:  service is not connected. Ignoring...")
             return
@@ -240,11 +250,11 @@ class ServiceConnector(private val context: Context) {
             throw RemoteException("Service is not connected")
         }
         try {
-            if (serverService == null){
-                Log.e(TAG, "userSignUp: 1", )
+            if (serverService == null) {
+                Log.e(TAG, "userSignUp: 1")
             }
             serverService?.userSignUp(user)
-            Log.e(TAG, "userSignUp: ", )
+            Log.e(TAG, "userSignUp: ")
         } catch (e: RemoteException) {
             e.printStackTrace()
         }
@@ -274,13 +284,49 @@ class ServiceConnector(private val context: Context) {
         }
     }
 
-    fun getStatisticCovid() {
+    fun getStatisticCovidVn() {
         if (!serviceConnected) {
             Log.d(TAG, "getStatisticCovid: service is not connected. Ignoring...")
             throw RemoteException("Service is not connected")
         }
         try {
-            serverService?.getStatisticCovid()
+            serverService?.getStatisticCovidVn()
+        } catch (e: RemoteException) {
+            e.printStackTrace()
+        }
+    }
+
+    fun getStatisticCovidWorld() {
+        if (!serviceConnected) {
+            Log.d(TAG, "getStatisticCovid: service is not connected. Ignoring...")
+            throw RemoteException("Service is not connected")
+        }
+        try {
+            serverService?.getStatisticCovidWorld()
+        } catch (e: RemoteException) {
+            e.printStackTrace()
+        }
+    }
+
+    fun getHistoryCovidWorld() {
+        if (!serviceConnected) {
+            Log.d(TAG, "getStatisticCovid: service is not connected. Ignoring...")
+            throw RemoteException("Service is not connected")
+        }
+        try {
+            serverService?.getHistoryCovidWorld()
+        } catch (e: RemoteException) {
+            e.printStackTrace()
+        }
+    }
+
+    fun getHistoryCovidVn() {
+        if (!serviceConnected) {
+            Log.d(TAG, "getStatisticCovid: service is not connected. Ignoring...")
+            throw RemoteException("Service is not connected")
+        }
+        try {
+            serverService?.getHistoryCovidVn()
         } catch (e: RemoteException) {
             e.printStackTrace()
         }
@@ -316,8 +362,10 @@ class ServiceConnector(private val context: Context) {
 
         fun setCallback(cb: CallbackConnector): Builder {
             connectorClient.callbackConnector = cb
-            if (cb is CallbackConnector.CallbackConnectorUser) connectorClient.callbackConnectorUser = cb
-            if (cb is CallbackConnector.CallbackConnectorAdmin) connectorClient.callbackConnectorAdmin = cb
+            if (cb is CallbackConnector.CallbackConnectorUser) connectorClient.callbackConnectorUser =
+                cb
+            if (cb is CallbackConnector.CallbackConnectorAdmin) connectorClient.callbackConnectorAdmin =
+                cb
             return this@Builder
         }
 

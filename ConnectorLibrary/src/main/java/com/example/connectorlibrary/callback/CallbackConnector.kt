@@ -26,14 +26,20 @@ interface CallbackConnector {
 
         fun onInsertHealth(healthResponse: HealthResponse)
 
-        fun onGetStatisticCovid(statisticCovidVnResponse: StatisticCovidVnResponse)
+        fun onGetStatisticCovidVn(statisticCovidVnResponse: StatisticCovidVnResponse)
+
+        fun onGetStatisticCovidWorld(statisticCovidWorldResponse: StatisticCovidWorldResponse)
+
+        fun onGetHistoryCovidWorld(historyCovidResponse: HistoryCovidResponse)
+
+        fun onGetHistoryCovidVn(historyCovidResponse: HistoryCovidResponse)
 
         fun onGetUser(user: UserResponse)
 
         fun onUpdateUser(user: UserResponse)
     }
 
-    interface CallbackConnectorAdmin: CallbackConnector {
+    interface CallbackConnectorAdmin : CallbackConnector {
 
         fun onGetAllUsers(listUsersResponse: ListUsersResponse)
 

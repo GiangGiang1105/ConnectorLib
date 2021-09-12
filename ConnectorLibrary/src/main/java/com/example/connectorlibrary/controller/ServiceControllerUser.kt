@@ -21,7 +21,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
 
     override fun addCallback(callbackConnector: CallbackConnector.CallbackConnectorUser) {
         super.addCallback(callbackConnector)
-        Log.e("TAG", "addCallback: ", )
+        Log.e("TAG", "addCallback: ")
         if (callbacks.size > 0) {
             connect()
         }
@@ -85,7 +85,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
 
     override fun onFailureResponse(failureResponse: FailureResponse) {
         coroutineScope.launch {
-            Log.e("TAG", "onFailureResponse:controller ", )
+            Log.e("TAG", "onFailureResponse:controller ")
             callbacks.forEach {
                 it.onFailureResponse(failureResponse)
             }
@@ -94,7 +94,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
 
     override fun onUserSignUp(authResponse: AuthResponse) {
         coroutineScope.launch {
-            Log.e("TAG", "onUserSignUp: controller", )
+            Log.e("TAG", "onUserSignUp: controller")
             callbacks.forEach {
                 it.onUserSignUp(authResponse)
             }
@@ -117,10 +117,34 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
         }
     }
 
-    override fun onGetStatisticCovid(statisticCovidVnResponse: StatisticCovidVnResponse) {
+    override fun onGetStatisticCovidVn(statisticCovidVnResponse: StatisticCovidVnResponse) {
         coroutineScope.launch {
             callbacks.forEach {
-                it.onGetStatisticCovid(statisticCovidVnResponse)
+                it.onGetStatisticCovidVn(statisticCovidVnResponse)
+            }
+        }
+    }
+
+    override fun onGetStatisticCovidWorld(statisticCovidWorldResponse: StatisticCovidWorldResponse) {
+        coroutineScope.launch {
+            callbacks.forEach {
+                it.onGetStatisticCovidWorld(statisticCovidWorldResponse)
+            }
+        }
+    }
+
+    override fun onGetHistoryCovidWorld(historyCovidResponse: HistoryCovidResponse) {
+        coroutineScope.launch {
+            callbacks.forEach {
+                it.onGetHistoryCovidWorld(historyCovidResponse)
+            }
+        }
+    }
+
+    override fun onGetHistoryCovidVn(historyCovidResponse: HistoryCovidResponse) {
+        coroutineScope.launch {
+            callbacks.forEach {
+                it.onGetHistoryCovidVn(historyCovidResponse)
             }
         }
     }
@@ -142,7 +166,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
     }
 
     private fun connect() {
-        Log.e("TAG", "connect: ", )
+        Log.e("TAG", "connect: ")
         serviceProvider.connectService()
     }
 
@@ -171,7 +195,7 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
     }
 
     fun userSignUp(user: User) {
-        Log.e("TAG", "userSignUp: 11111", )
+        Log.e("TAG", "userSignUp: 11111")
         serviceProvider.userSignUp(user)
     }
 
@@ -183,9 +207,22 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
         serviceProvider.insertHealth(health)
     }
 
-    fun getStatisticCovid() {
-        serviceProvider.getStatisticCovid()
+    fun getStatisticCovidVn() {
+        serviceProvider.getStatisticCovidVn()
     }
+
+    fun getStatisticCovidWorld() {
+        serviceProvider.getStatisticCovidWorld()
+    }
+
+    fun getHistoryCovidVn() {
+        serviceProvider.getHistoryCovidVn()
+    }
+
+    fun getHistoryCovidWorld() {
+        serviceProvider.getHistoryCovidWorld()
+    }
+
 
     fun getUser(userId: Int) {
         serviceProvider.getUser(userId)

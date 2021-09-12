@@ -6,11 +6,13 @@ import com.example.connectorlibrary.enitity.HealthResponse;
 import  com.example.connectorlibrary.enitity.UserResponse;
 import  com.example.connectorlibrary.enitity.ListUsersResponse;
 import  com.example.connectorlibrary.enitity.StatusResponse;
+import  com.example.connectorlibrary.enitity.StatisticCovidWorldResponse;
 import  com.example.connectorlibrary.enitity.StatisticCovidVnResponse;
 import  com.example.connectorlibrary.enitity.SymptomResponse;
 import  com.example.connectorlibrary.enitity.ActiveResponse;
 import  com.example.connectorlibrary.enitity.GenderResponse;
 import  com.example.connectorlibrary.enitity.FailureResponse;
+import  com.example.connectorlibrary.enitity.HistoryCovidResponse;
 // Declare any non-default types here with import statements
 
 interface  IServerServiceCallback {
@@ -57,9 +59,24 @@ interface  IServerServiceCallback {
     void onGetStatus(in StatusResponse statusResponse);
 
      /**
-              * Called upon get statistic covid request process.
+              * Called upon get statistic covid vietnam request process.
          */
-    void onGetStatisticCovid(in StatisticCovidVnResponse statistic);
+    void onGetStatisticCovidVn(in StatisticCovidVnResponse statistic);
+
+       /**
+                  * Called upon get statistic covid world request process.
+             */
+    void onGetStatisticCovidWorld(in StatisticCovidWorldResponse statistic);
+     /**
+                      * Called upon get history covid vietnam request process.
+                 */
+    void onGetHistoryCovidVn(in HistoryCovidResponse history);
+
+     /**
+                          * Called upon get history covid vietnam request process.
+                     */
+    void onGetHistoryCovidWorld(in HistoryCovidResponse history);
+
     /**
               * Called upon get symptom request process.
          */
@@ -72,6 +89,10 @@ interface  IServerServiceCallback {
                    * Called upon get gender request process.
               */
      void onGetGender(in GenderResponse genderResponse);
+      /**
+                        * Called upon sa request process if even error.
+                   */
+
  /**
                    * Called upon all request process if even error.
               */

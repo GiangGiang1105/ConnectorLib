@@ -70,12 +70,18 @@ interface IServerService {
     void getStatus();
 
     /**
-          * Called upon get statistic covid request process.
+          * Called upon get statistic covid vietnam request process.
      */
-    void getStatisticCovid();
+    void getStatisticCovidVn();
+
+     /**
+              * Called upon get statistic covid world request process.
+         */
+    void getStatisticCovidWorld();
 /**
           * Called upon get symptom request process.
      */
+
     void getSymptom();
  /**
            * Called upon get active request process.
@@ -85,4 +91,12 @@ interface IServerService {
                * Called upon get gender request process.
           */
     void getGender();
+       /**
+                   * Called upon get history covid vietname request process.
+              */
+     void getHistoryCovidVn();
+        /**
+                        * Called upon get history covid world request process.
+                   */
+     void getHistoryCovidWorld();
 }
