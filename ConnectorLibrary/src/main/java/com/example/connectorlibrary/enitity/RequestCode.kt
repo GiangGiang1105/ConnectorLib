@@ -18,5 +18,9 @@ annotation class RequestCode {
         const val LOCK_USER = 12
         const val GET_ACTIVE = 13
         const val GET_GENDER = 14
+        const val GET_STATISTIC_COVID_VN = 15
+        const val GET_STATISTIC_COVID_WORLD = 16
+        const val GET_HISTORY_COVID_VN = 17
+        const val GET_HISTORY_COVID_WORLD = 16
     }
 }

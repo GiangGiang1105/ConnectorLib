@@ -6,5 +6,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class StatisticCovidWorldResponse(
     @ResponseCode val responseCode: Int,
-    val statisticCovid: List<StatisticCovidWorld>
+    val statisticCovid: StatisticCovidWorld
 ) : Parcelable
