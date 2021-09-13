@@ -13,7 +13,7 @@ import kotlinx.android.parcel.Parcelize
 data class Health(
     @PrimaryKey(autoGenerate = true)
     val health_id: Int = 0,
-    val symptom_id: List<Int>,
+    val list_symptom_id: List<Int>,
     val user_id: Int = 0,
-    val declare_time: Long
+    val declare_time: Long = 0
 ) : Parcelable
