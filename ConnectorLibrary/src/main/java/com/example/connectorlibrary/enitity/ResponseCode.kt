@@ -3,7 +3,7 @@ package com.example.connectorlibrary.enitity
 @Suppress("UNUSED")
 @Retention(AnnotationRetention.SOURCE)
 annotation class ResponseCode {
-
+//ResponseCode 
     companion object {
         const val SUCCESS = 0
         const val ERROR_SIGN_UP = -1
