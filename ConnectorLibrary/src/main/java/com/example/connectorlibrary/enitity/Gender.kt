@@ -9,6 +9,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class Gender(
     @PrimaryKey(autoGenerate = true)
-    val gender_id: Int = 0,
-    val gender_name: String = ""
+    var gender_id: Int = 0,
+    var gender_name: String = ""
 ) : Parcelable

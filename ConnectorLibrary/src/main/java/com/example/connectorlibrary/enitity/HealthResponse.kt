@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class HealthResponse(
-    @RequestCode val requestCode: Int,
-    @ResponseCode val responseCode: Int,
-    val health_id: Int?,
-    val listHealths: List<Health>,
+    @RequestCode var requestCode: Int,
+    @ResponseCode var responseCode: Int,
+    var health_id: Int?,
+    var listHealths: List<Health>,
 ) : Parcelable

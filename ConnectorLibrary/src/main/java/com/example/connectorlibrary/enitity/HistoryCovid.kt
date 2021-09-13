@@ -13,9 +13,9 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "history_covid")
 data class HistoryCovid(
     @PrimaryKey(autoGenerate = true)
-    val history_id: Int = 0,
-    val area: String = "all",
-    val status: Int = 0,
+    var history_id: Int = 0,
+    var area: String = "all",
+    var status: Int = 0,
     @ColumnInfo(name = "list_people_in_day")
-    val listPeopleInDay: List<PeopleInDay>
+    var listPeopleInDay: List<PeopleInDay>
 ) : Parcelable

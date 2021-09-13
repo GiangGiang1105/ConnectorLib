@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class GenderResponse(
-    @ResponseCode val responseCode: Int,
-    val listGender: List<Gender>
+    @ResponseCode var responseCode: Int,
+    var listGender: List<Gender>
 ) : Parcelable

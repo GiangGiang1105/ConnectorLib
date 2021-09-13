@@ -9,5 +9,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Status(
     @PrimaryKey(autoGenerate = true)
-    val status_id: Int = 0, val status_name: String = ""
+    var status_id: Int = 0, var status_name: String = ""
 ) : Parcelable

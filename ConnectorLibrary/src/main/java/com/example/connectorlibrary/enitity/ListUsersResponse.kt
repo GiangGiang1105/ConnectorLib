@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class ListUsersResponse(
-    @ResponseCode val responseCode: Int,
-    val listUsers: List<User>
+    @ResponseCode var responseCode: Int,
+    var listUsers: List<User>
 ) : Parcelable

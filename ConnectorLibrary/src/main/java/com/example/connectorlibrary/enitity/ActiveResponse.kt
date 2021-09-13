@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ActiveResponse(
-    @ResponseCode val responseCode: Int,
-    val listActive: List<Active>
+    @ResponseCode var responseCode: Int,
+    var listActive: List<Active>
 ): Parcelable

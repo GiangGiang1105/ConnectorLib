@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class HistoryCovidResponse(
-    @RequestCode val requestCode: Int,
-    @ResponseCode val responseCode: Int,
-    val listHistoryCovid: List<HistoryCovid>
+    @RequestCode var requestCode: Int,
+    @ResponseCode var responseCode: Int,
+    var listHistoryCovid: List<HistoryCovid>
 ) : Parcelable

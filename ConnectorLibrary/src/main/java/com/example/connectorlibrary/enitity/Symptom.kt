@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "symptom")
 @Parcelize
 data class  Symptom(
-    @PrimaryKey(autoGenerate = true) val symptom_id: Int = 0,
-    val status_id: Int = 0,
-    val symptom_name: String = ""
+    @PrimaryKey(autoGenerate = true) var symptom_id: Int = 0,
+    var status_id: Int = 0,
+    var symptom_name: String = ""
 ) : Parcelable

@@ -9,13 +9,13 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "statistic_covid_world")
 @Parcelize
 data class StatisticCovidWorld(
-    @PrimaryKey(autoGenerate = true) val statistic_id: Int = 0,
+    @PrimaryKey(autoGenerate = true) var statistic_id: Int = 0,
     @SerializedName("updated")
-    val updated: Long = 0,
+    var updated: Long = 0,
     @SerializedName("cases")
-    val cases: Int = 0,
+    var cases: Int = 0,
     @SerializedName("deaths")
-    val deaths: Int = 0,
+    var deaths: Int = 0,
     @SerializedName("recovered")
-    val recovered: Int = 0
+    var recovered: Int = 0
 ) : Parcelable

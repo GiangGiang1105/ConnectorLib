@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class AuthResponse(
-    @RequestCode val requestCode: Int,
-    @ResponseCode val responseCode: Int,
-    val user_id: Int,
-    val name: String
+    @RequestCode var requestCode: Int,
+    @ResponseCode var responseCode: Int,
+    var user_id: Int,
+    var name: String
 ) : Parcelable

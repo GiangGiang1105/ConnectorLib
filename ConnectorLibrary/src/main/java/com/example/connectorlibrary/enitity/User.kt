@@ -11,13 +11,13 @@ import java.util.Date
 @Parcelize
 data class User(
     @PrimaryKey(autoGenerate = true)
-    val user_id: Int = 0,
-    val name: String = "",
-    val phone_number: String = "",
-    val passport_number: String = "",
-    val birthday: Long = 0,
-    val gender_id: Int = 0,
-    val email: String = "",
-    val address: String = "",
-    val active_id: Int = 0
+    var user_id: Int = 0,
+    var name: String = "",
+    var phone_number: String = "",
+    var passport_number: String = "",
+    var birthday: Long = 0,
+    var gender_id: Int = 0,
+    var email: String = "",
+    var address: String = "",
+    var active_id: Int = 0
 ) : Parcelable
