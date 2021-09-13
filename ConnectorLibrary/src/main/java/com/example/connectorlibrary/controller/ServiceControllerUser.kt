@@ -149,10 +149,10 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
         }
     }
 
-    override fun onGetUser(user: UserResponse) {
+    override fun onGetUserInformation(user: UserResponse) {
         coroutineScope.launch {
             callbacks.forEach {
-                it.onGetUser(user)
+                it.onGetUserInformation(user)
             }
         }
     }
@@ -224,8 +224,8 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
     }
 
 
-    fun getUser(userId: Int) {
-        serviceProvider.getUser(userId)
+    fun getUserInformation(userId: Int) {
+        serviceProvider.getUserInformation(userId)
     }
 
     fun updateUser(user: User) {

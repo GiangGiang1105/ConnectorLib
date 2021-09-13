@@ -34,7 +34,7 @@ interface CallbackConnector {
 
         fun onGetHistoryCovidVn(historyCovidResponse: HistoryCovidResponse)
 
-        fun onGetUser(user: UserResponse)
+        fun onGetUserInformation(user: UserResponse)
 
         fun onUpdateUser(user: UserResponse)
     }

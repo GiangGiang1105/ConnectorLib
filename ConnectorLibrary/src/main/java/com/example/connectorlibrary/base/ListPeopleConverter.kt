@@ -4,7 +4,7 @@ import androidx.room.TypeConverter
 import com.example.connectorlibrary.enitity.PeopleInDay
 import com.google.gson.Gson
 
-class ListConverter {
+class ListPeopleConverter {
     @TypeConverter
     fun listToJsonString(value: List<PeopleInDay>?): String = Gson().toJson(value)
 

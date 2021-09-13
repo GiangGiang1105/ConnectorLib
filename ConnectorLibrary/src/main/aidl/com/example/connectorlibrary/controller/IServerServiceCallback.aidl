@@ -35,7 +35,7 @@ interface  IServerServiceCallback {
     /**
             * Called upon get user request process.
           */
-    void onGetUser(in UserResponse userResponse);
+    void onGetUserInformation(in UserResponse userResponse);
     /**
              * Called upon get user request process.
            */

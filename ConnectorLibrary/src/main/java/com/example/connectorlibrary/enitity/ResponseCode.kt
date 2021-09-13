@@ -5,7 +5,7 @@ package com.example.connectorlibrary.enitity
 annotation class ResponseCode {
 
     companion object {
-        const val OK = 0
+        const val SUCCESS = 0
         const val ERROR_SIGN_UP = -1
         const val ERROR_SIGN_IN_USER_NOT_FOUND = -2
         const val ERROR_GET_USER = -3

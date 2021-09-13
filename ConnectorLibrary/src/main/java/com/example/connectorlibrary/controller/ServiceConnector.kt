@@ -80,8 +80,8 @@ class ServiceConnector(private val context: Context) {
             callbackConnectorUser?.onInsertHealth(healthResponse)
         }
 
-        override fun onGetUser(userResponse: UserResponse) {
-            callbackConnectorUser?.onGetUser(userResponse)
+        override fun onGetUserInformation(userResponse: UserResponse) {
+            callbackConnectorUser?.onGetUserInformation(userResponse)
         }
 
         override fun onUpdateUser(userResponse: UserResponse) {
@@ -332,13 +332,13 @@ class ServiceConnector(private val context: Context) {
         }
     }
 
-    fun getUser(userId: Int) {
+    fun getUserInformation(userId: Int) {
         if (!serviceConnected) {
             Log.d(TAG, "getUser: service is not connected. Ignoring...")
             throw RemoteException("Service is not connected")
         }
         try {
-            serverService?.getUser(userId)
+            serverService?.getUserInformation(userId)
         } catch (e: RemoteException) {
             e.printStackTrace()
         }

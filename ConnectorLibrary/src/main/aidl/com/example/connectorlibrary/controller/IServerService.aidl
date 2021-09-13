@@ -46,7 +46,7 @@ interface IServerService {
  /**
         * Called upon get user request process.
       */
-     void getUser(in int user_id);
+     void getUserInformation(in int user_id);
  /**
          * Called upon get user request process.
        */
