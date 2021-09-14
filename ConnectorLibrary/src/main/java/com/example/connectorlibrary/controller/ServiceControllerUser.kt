@@ -29,11 +29,11 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
 
     override fun removeCallback(callbackConnector: CallbackConnector.CallbackConnectorUser) {
         super.removeCallback(callbackConnector)
+        Log.e("TAG", "removeCallback: ")
         if (callbacks.size == 0) {
             disconnect()
         }
     }
-
 
     override fun onServerConnected() {
         coroutineScope.launch {
