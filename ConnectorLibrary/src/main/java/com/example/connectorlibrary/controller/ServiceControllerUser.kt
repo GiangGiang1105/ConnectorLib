@@ -19,16 +19,16 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
         .build()
     override val callbacks: ArrayList<CallbackConnector.CallbackConnectorUser> = ArrayList()
 
-    override fun addCallback(callbackConnector: CallbackConnector.CallbackConnectorUser) {
-        super.addCallback(callbackConnector)
+    override fun addCallback(callback: CallbackConnector.CallbackConnectorUser) {
+        super.addCallback(callback)
         Log.e("TAG", "addCallback: ")
         if (callbacks.size > 0) {
             connect()
         }
     }
 
-    override fun removeCallback(callbackConnector: CallbackConnector.CallbackConnectorUser) {
-        super.removeCallback(callbackConnector)
+    override fun removeCallback(callback: CallbackConnector.CallbackConnectorUser) {
+        super.removeCallback(callback)
         if (callbacks.size == 0) {
             disconnect()
         }

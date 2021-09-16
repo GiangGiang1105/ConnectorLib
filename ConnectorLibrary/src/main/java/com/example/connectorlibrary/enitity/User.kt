@@ -19,5 +19,5 @@ data class User(
     var gender_id: Int = 0,
     var email: String = "",
     var address: String = "",
-    var active_id: Int = 0
+    var isActive: Boolean = true
 ) : Parcelable
