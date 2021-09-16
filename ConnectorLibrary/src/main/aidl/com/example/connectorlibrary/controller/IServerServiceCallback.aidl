@@ -70,17 +70,9 @@ interface  IServerServiceCallback {
          */
     void onGetSymptom(in SymptomResponse symptomResponse);
      /**
-               * Called upon get active request process.
-          */
-    void onGetActive(in ActiveResponse activeResponse);
-     /**
                    * Called upon get gender request process.
               */
      void onGetGender(in GenderResponse genderResponse);
-      /**
-                        * Called upon sa request process if even error.
-                   */
-
  /**
                    * Called upon all request process if even error.
               */
