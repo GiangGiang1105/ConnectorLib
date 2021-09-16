@@ -69,15 +69,6 @@ interface IServerService {
    */
     void getStatus();
 
-    /**
-          * Called upon get statistic covid vietnam request process.
-     */
-    void getStatisticCovidVn();
-
-     /**
-              * Called upon get statistic covid world request process.
-         */
-    void getStatisticCovidWorld();
 /**
           * Called upon get symptom request process.
      */

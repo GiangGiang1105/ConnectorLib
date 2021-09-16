@@ -6,8 +6,6 @@ import com.example.connectorlibrary.enitity.HealthResponse;
 import  com.example.connectorlibrary.enitity.UserResponse;
 import  com.example.connectorlibrary.enitity.ListUsersResponse;
 import  com.example.connectorlibrary.enitity.StatusResponse;
-import  com.example.connectorlibrary.enitity.StatisticCovidWorldResponse;
-import  com.example.connectorlibrary.enitity.StatisticCovidVnResponse;
 import  com.example.connectorlibrary.enitity.SymptomResponse;
 import  com.example.connectorlibrary.enitity.ActiveResponse;
 import  com.example.connectorlibrary.enitity.GenderResponse;
@@ -57,16 +55,6 @@ interface  IServerServiceCallback {
           * Called upon get static request process.
        */
     void onGetStatus(in StatusResponse statusResponse);
-
-     /**
-              * Called upon get statistic covid vietnam request process.
-         */
-    void onGetStatisticCovidVn(in StatisticCovidVnResponse statistic);
-
-       /**
-                  * Called upon get statistic covid world request process.
-             */
-    void onGetStatisticCovidWorld(in StatisticCovidWorldResponse statistic);
      /**
                       * Called upon get history covid vietnam request process.
                  */

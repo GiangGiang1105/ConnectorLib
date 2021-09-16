@@ -10,5 +10,5 @@ import kotlinx.android.parcel.Parcelize
 data class Active(
     @PrimaryKey(autoGenerate = true)
     var active_id: Int = 0,
-    var active_name: String = ""
+    var active_name: Boolean
 ) : Parcelable

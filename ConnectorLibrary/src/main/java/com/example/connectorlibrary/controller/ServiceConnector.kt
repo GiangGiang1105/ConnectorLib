@@ -88,14 +88,6 @@ class ServiceConnector(private val context: Context) {
             callbackConnectorUser?.onUpdateUser(userResponse)
         }
 
-        override fun onGetStatisticCovidVn(statistic: StatisticCovidVnResponse) {
-            callbackConnectorUser?.onGetStatisticCovidVn(statistic)
-        }
-
-        override fun onGetStatisticCovidWorld(statistic: StatisticCovidWorldResponse) {
-            callbackConnectorUser?.onGetStatisticCovidWorld(statistic)
-        }
-
         override fun onGetHistoryCovidVn(history: HistoryCovidResponse) {
             callbackConnectorUser?.onGetHistoryCovidVn(history)
         }
@@ -279,30 +271,6 @@ class ServiceConnector(private val context: Context) {
         }
         try {
             serverService?.insertHealth(health)
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-    }
-
-    fun getStatisticCovidVn() {
-        if (!serviceConnected) {
-            Log.d(TAG, "getStatisticCovid: service is not connected. Ignoring...")
-            throw RemoteException("Service is not connected")
-        }
-        try {
-            serverService?.getStatisticCovidVn()
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-    }
-
-    fun getStatisticCovidWorld() {
-        if (!serviceConnected) {
-            Log.d(TAG, "getStatisticCovid: service is not connected. Ignoring...")
-            throw RemoteException("Service is not connected")
-        }
-        try {
-            serverService?.getStatisticCovidWorld()
         } catch (e: RemoteException) {
             e.printStackTrace()
         }

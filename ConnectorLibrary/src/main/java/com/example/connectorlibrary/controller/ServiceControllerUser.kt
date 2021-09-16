@@ -117,22 +117,6 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
         }
     }
 
-    override fun onGetStatisticCovidVn(statisticCovidVnResponse: StatisticCovidVnResponse) {
-        coroutineScope.launch {
-            callbacks.forEach {
-                it.onGetStatisticCovidVn(statisticCovidVnResponse)
-            }
-        }
-    }
-
-    override fun onGetStatisticCovidWorld(statisticCovidWorldResponse: StatisticCovidWorldResponse) {
-        coroutineScope.launch {
-            callbacks.forEach {
-                it.onGetStatisticCovidWorld(statisticCovidWorldResponse)
-            }
-        }
-    }
-
     override fun onGetHistoryCovidWorld(historyCovidResponse: HistoryCovidResponse) {
         coroutineScope.launch {
             callbacks.forEach {
@@ -205,14 +189,6 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
 
     fun insertHealth(health: Health) {
         serviceProvider.insertHealth(health)
-    }
-
-    fun getStatisticCovidVn() {
-        serviceProvider.getStatisticCovidVn()
-    }
-
-    fun getStatisticCovidWorld() {
-        serviceProvider.getStatisticCovidWorld()
     }
 
     fun getHistoryCovidVn() {
