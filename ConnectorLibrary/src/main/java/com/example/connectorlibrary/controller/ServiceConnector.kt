@@ -158,7 +158,7 @@ class ServiceConnector(private val context: Context) {
             throw RemoteException("Service is not connected")
         }
         try {
-            serverService?.getStatus()
+            serverService?.getSymptom()
         } catch (e: RemoteException) {
             e.printStackTrace()
         }
@@ -182,7 +182,7 @@ class ServiceConnector(private val context: Context) {
             throw RemoteException("Service is not connected")
         }
         try {
-            serverService?.getStatus()
+            serverService?.getGender()
         } catch (e: RemoteException) {
             e.printStackTrace()
         }
