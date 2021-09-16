@@ -56,10 +56,6 @@ class ServiceConnector(private val context: Context) {
             callbackConnector?.onGetSymptom(symptomResponse)
         }
 
-        override fun onGetActive(activeResponse: ActiveResponse) {
-            callbackConnector?.onGetActive(activeResponse)
-        }
-
         override fun onGetGender(genderResponse: GenderResponse) {
             callbackConnector?.onGetGender(genderResponse)
         }
@@ -159,18 +155,6 @@ class ServiceConnector(private val context: Context) {
         }
         try {
             serverService?.getSymptom()
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-    }
-
-    fun getActive() {
-        if (!serviceConnected) {
-            Log.d(TAG, "getActive: service is not connected. Ignoring...")
-            throw RemoteException("Service is not connected")
-        }
-        try {
-            serverService?.getActive()
         } catch (e: RemoteException) {
             e.printStackTrace()
         }

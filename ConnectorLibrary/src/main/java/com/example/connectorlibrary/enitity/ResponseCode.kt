@@ -22,7 +22,6 @@ annotation class ResponseCode {
         const val ERROR_LIST_USER_NULL = -14
         const val ERROR_DELETE_USER = -15
         const val ERROR_LOCK_USER = -16
-        const val ERROR_LIST_ACTIVE_NULL = -17
         const val ERROR_LIST_GENDER_NULL = -17
         const val ERROR_STATISTIC_COVID_VN_NULL = -18
         const val ERROR_STATISTIC_COVID_WORLD_NULL = -19

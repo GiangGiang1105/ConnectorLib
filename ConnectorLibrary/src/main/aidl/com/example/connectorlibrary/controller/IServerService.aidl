@@ -74,10 +74,6 @@ interface IServerService {
      */
 
     void getSymptom();
- /**
-           * Called upon get active request process.
-      */
-    void getActive();
      /**
                * Called upon get gender request process.
           */

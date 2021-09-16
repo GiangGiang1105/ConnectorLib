@@ -20,15 +20,15 @@ class ServiceControllerAdmin(context: Context) : CallbackConnector.CallbackConne
     override val callbacks: ArrayList<CallbackConnector.CallbackConnectorAdmin> = ArrayList()
 
 
-    override fun addCallback(callbackConnector: CallbackConnector.CallbackConnectorAdmin) {
-        super.addCallback(callbackConnector)
+    override fun addCallback(callback: CallbackConnector.CallbackConnectorAdmin) {
+        super.addCallback(callback)
         if (callbacks.size > 0) {
             connect()
         }
     }
 
-    override fun removeCallback(callbackConnector: CallbackConnector.CallbackConnectorAdmin) {
-        super.removeCallback(callbackConnector)
+    override fun removeCallback(callback: CallbackConnector.CallbackConnectorAdmin) {
+        super.removeCallback(callback)
         if (callbacks.size == 0) {
             disconnect()
         }
@@ -54,14 +54,6 @@ class ServiceControllerAdmin(context: Context) : CallbackConnector.CallbackConne
         coroutineScope.launch {
             callbacks.forEach {
                 it.onGetSymptom(symptomResponse)
-            }
-        }
-    }
-
-    override fun onGetActive(activeResponse: ActiveResponse) {
-        coroutineScope.launch {
-            callbacks.forEach {
-                it.onGetActive(activeResponse)
             }
         }
     }
@@ -128,10 +120,6 @@ class ServiceControllerAdmin(context: Context) : CallbackConnector.CallbackConne
 
     fun getSymptom() {
         serviceProvider.getSymptom()
-    }
-
-    fun getActive() {
-        serviceProvider.getActive()
     }
 
     fun getGender() {

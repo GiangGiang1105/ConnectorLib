@@ -59,14 +59,6 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
         }
     }
 
-    override fun onGetActive(activeResponse: ActiveResponse) {
-        coroutineScope.launch {
-            callbacks.forEach {
-                it.onGetActive(activeResponse)
-            }
-        }
-    }
-
     override fun onGetGender(genderResponse: GenderResponse) {
         coroutineScope.launch {
             callbacks.forEach {
@@ -164,10 +156,6 @@ class ServiceControllerUser(context: Context) : CallbackConnector.CallbackConnec
 
     fun getSymptom() {
         serviceProvider.getSymptom()
-    }
-
-    fun getActive() {
-        serviceProvider.getActive()
     }
 
     fun getGender() {

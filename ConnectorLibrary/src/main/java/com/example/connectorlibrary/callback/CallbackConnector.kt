@@ -10,8 +10,6 @@ interface CallbackConnector {
 
     fun onGetSymptom(symptomResponse: SymptomResponse)
 
-    fun onGetActive(activeResponse: ActiveResponse)
-
     fun onGetGender(genderResponse: GenderResponse)
 
     fun onGetUserHealths(healthResponse: HealthResponse)
