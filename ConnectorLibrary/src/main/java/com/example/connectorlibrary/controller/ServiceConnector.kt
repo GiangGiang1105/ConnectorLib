@@ -124,7 +124,7 @@ class ServiceConnector(private val context: Context) {
     fun disconnectService() {
         Log.e(TAG, "disconnectService: ")
         if (!serviceConnected) {
-            Log.d(TAG, "disconnectService:  service is not connected. Ignoring...")
+            Log.d(TAG, "disconnectService: service is not connected. Ignoring...")
             return
         }
         try {
