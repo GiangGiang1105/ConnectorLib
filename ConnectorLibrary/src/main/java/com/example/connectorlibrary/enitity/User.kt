@@ -3,9 +3,7 @@ package com.example.connectorlibrary.enitity
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
 import kotlinx.android.parcel.Parcelize
-import java.util.Date
 
 @Entity(tableName = "user")
 @Parcelize
@@ -19,5 +17,6 @@ data class User(
     var gender_id: Int = 0,
     var email: String = "",
     var address: String = "",
-    var isActive: Boolean = true
+    var isActive: Boolean = true,
+    var user_image: String = ""
 ) : Parcelable
